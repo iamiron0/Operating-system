@@ -22,17 +22,17 @@ int main() {
         scanf("%d", &p[i].btime); // Read burst time
     }
 
-    // Waiting and Turnaround times calculation
-    p[0].wtime = 0; // Waiting time for the first process is 0
-    p[0].ttime = p[0].btime; // Turnaround time for the first process is equal to its burst time
-    totwtime = p[0].wtime; // Start summing waiting time
-    totttime = p[0].ttime; // Start summing turnaround time
+    
+    p[0].wtime = 0; 
+    p[0].ttime = p[0].btime;
+    totwtime = p[0].wtime;
+    totttime = p[0].ttime; 
 
     for(i = 1; i < n; i++) {
-        p[i].wtime = p[i-1].wtime + p[i-1].btime; // Waiting time of current process
-        p[i].ttime = p[i].wtime + p[i].btime; // Turnaround time = waiting time + burst time
-        totwtime += p[i].wtime; // Sum of waiting times
-        totttime += p[i].ttime; // Sum of turnaround times
+        p[i].wtime = p[i-1].wtime + p[i-1].btime; 
+        p[i].ttime = p[i].wtime + p[i].btime; 
+        totwtime += p[i].wtime; 
+        totttime += p[i].ttime;
     }
 
     // Display the results
