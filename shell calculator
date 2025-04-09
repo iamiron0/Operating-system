@@ -19,6 +19,63 @@ echo differenece of $num1 and $num2 is $rs;;
 echo  product is $rs;;
      
 4)rs=$(($num1/$num2))
-echo  Division is  $rs;;
-     
+echo  Division is  $rs;;    
 esac
+
+Input output opeation-------
+
+
+
+echo "Enter the name"
+read name
+echo "Enter the age"
+read age
+echo Name:Entered name is: $name
+echo Age:$age
+
+
+
+
+ODD OR EVEN------------
+
+
+echo "Enter the number"
+read num
+if((num % 2 == 0))
+then 
+   echo The number is Even
+else
+   echo The number is Odd
+fi
+
+Largest From list---------
+
+echo "Enter the list of number"
+read n
+echo "Enter the number 1:"
+read largest
+for(( i=2; i<=n; i++ ))
+do 
+   echo "Enter the num $i:"
+   read num
+   if(( num > largest ))
+   then 
+       largest=$num
+   fi
+done
+echo "Largest is: $largest"
+ 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
