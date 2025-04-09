@@ -2,23 +2,23 @@ echo "Enter the First number"
 read num1
 echo "Enter the Second number"
 read num2
-echo"Enter 1 for addition"
-echo"Enter 2 for subtraction"
-echo"Enter 3 for multlipaction"
-echo"Enter 4 for Division"
+echo 1"Enter 1 for addition"
+echo 2"Enter 2 for subtraction"
+echo 3"Enter 3 for multlipaction"
+echo 4 "Enter 4 for Division"
 
 read operator
 case $operator in
 1)rs=$(($num1+$num2))
-echo $rs;;
+echo sum of $num1 and $num2 is$rs;;
       
 2)rs=$(($num1-$num2))
-echo $rs;;
+echo differenece of $num1 and $num2 is $rs;;
       
 3)rs=$(($num1*$num2))
-echo $rs;;
+echo  product is $rs;;
      
 4)rs=$(($num1/$num2))
-echo $rs;;
+echo  Division is  $rs;;
      
 esac
