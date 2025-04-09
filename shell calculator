@@ -1,0 +1,24 @@
+echo "Enter the First number"
+read num1
+echo "Enter the Second number"
+read num2
+echo"Enter 1 for addition"
+echo"Enter 2 for subtraction"
+echo"Enter 3 for multlipaction"
+echo"Enter 4 for Division"
+
+read operator
+case $operator in
+1)rs=$(($num1+$num2))
+echo $rs;;
+      
+2)rs=$(($num1-$num2))
+echo $rs;;
+      
+3)rs=$(($num1*$num2))
+echo $rs;;
+     
+4)rs=$(($num1/$num2))
+echo $rs;;
+     
+esac
