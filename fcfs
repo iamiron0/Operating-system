@@ -1,50 +1,65 @@
 #include <stdio.h>
-#include<stdlib.h>
-struct fcfs
-{
+#include <stdlib.h>
+
+struct fcfs {
     int pid;
     int btime;
     int wtime;
     int ttime;
-}
-p[10]
-int main(){
-int totwtime=0;totttime=0;
-printf("\nFcfs scheduling...\n");
-printf("Enter the process");
-scanf("%d",&n);
-for(i=0;i<n;i++)
-{
-    p[i].pid=1; #set id as 1
-    printf("\n Burst time of the procees:");
-    scanf("%d",p[i].btime);
-}
-p[0].wtime=0;
-p[0].ttime=p[0].btime;
-for(i=0;i<n;i++)
-{
-    p[i].wtime=p[i-1].wtime+p[i-1]btime;
-    p[i].ttime=p[i].wtime+p[i.btime;
-    totttime+=p[i].ttime;
-    totwtime+=p[i].p[i].wtime;
-}
- 
- printf("\n Total waiting time:%d",totwtime);
- printf("\nAverage waiting time:%d",totwtime/n);
- printf("\n Total turn around timr:%d",totttime);
- printf("\n Average turn around timr:%d",totttime/n);
-}
-}
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-    
+} p[10];
+
+int main() {
+    int n, i;
+    int totwtime = 0, totttime = 0;
+
+    printf("\nFCFS scheduling...\n");
+    printf("Enter the number of processes: ");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++) {
+        p[i].pid = i + 1; // Assign a unique process ID
+        printf("\nEnter burst time for process %d: ", p[i].pid);
+        scanf("%d", &p[i].btime); // Read burst time
+    }
+
+    // Waiting and Turnaround times calculation
+    p[0].wtime = 0; // Waiting time for the first process is 0
+    p[0].ttime = p[0].btime; // Turnaround time for the first process is equal to its burst time
+    totwtime = p[0].wtime; // Start summing waiting time
+    totttime = p[0].ttime; // Start summing turnaround time
+
+    for(i = 1; i < n; i++) {
+        p[i].wtime = p[i-1].wtime + p[i-1].btime; // Waiting time of current process
+        p[i].ttime = p[i].wtime + p[i].btime; // Turnaround time = waiting time + burst time
+        totwtime += p[i].wtime; // Sum of waiting times
+        totttime += p[i].ttime; // Sum of turnaround times
+    }
+
+    // Display the results
+    printf("\nProcess\tBurst Time\tWaiting Time\tTurnaround Time\n");
+    for(i = 0; i < n; i++) {
+        printf("%d\t\t%d\t\t%d\t\t%d\n", p[i].pid, p[i].btime, p[i].wtime, p[i].ttime);
+    }
+
+    // Calculate average times
+    printf("\nTotal waiting time: %d", totwtime);
+    printf("\nAverage waiting time: %.2f", (float)totwtime / n);
+    printf("\nTotal turnaround time: %d", totttime);
+    printf("\nAverage turnaround time: %.2f", (float)totttime / n);
+
+    // Display the Gantt chart
+    printf("\n\nGantt Chart:\n");
+    printf("-------------------------------------------------\n");
+    for(i = 0; i < n; i++) {
+        printf("| P%d ", p[i].pid); // Print process IDs in Gantt chart
+    }
+    printf("|\n");
+
+    printf("-------------------------------------------------\n");
+    for(i = 0; i < n; i++) {
+        printf("%d   ", p[i].wtime); // Print the start time for each process
+    }
+    printf("%d\n", p[n-1].ttime); // Print the end time of the last process
+
+    return 0;
 }
